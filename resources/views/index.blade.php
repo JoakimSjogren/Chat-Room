@@ -15,4 +15,5 @@
 
 <button type="submit">enter</button>
 
+<a href="/register">Create an account</a>
 </form>
