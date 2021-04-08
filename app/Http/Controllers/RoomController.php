@@ -18,7 +18,7 @@ class RoomController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $messages = DB::table('users')->get();
+        $messages = DB::table('messages')->get();
 
 
         $user = Auth::user();
