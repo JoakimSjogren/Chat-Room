@@ -16,11 +16,11 @@ class SendMessageController extends Controller
      */
     public function __invoke(Request $request)
     {
-        
+
         $this->validate($request, [
             'message' => 'required',
         ]);
-        
+
         $message = new Message();
         $message->message = $request->input('message');
         $message->user_id = Auth::id();

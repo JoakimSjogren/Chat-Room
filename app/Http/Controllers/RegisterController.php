@@ -21,7 +21,7 @@ class RegisterController extends Controller
             'email' => 'required',
             'password' => 'required',
         ]);
-        
+
         $user = new User();
         $user->name = $request->input('name');
         $user->email = $request->input('email');
@@ -30,5 +30,4 @@ class RegisterController extends Controller
 
         return back()->withErrors('Ajabaja det funkar inte!');
     }
-
 }
