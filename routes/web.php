@@ -5,6 +5,7 @@ use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\SendMessageController;
+use App\Models\Message;
 use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
