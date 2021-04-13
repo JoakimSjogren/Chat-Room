@@ -22,6 +22,6 @@ class LoginController extends Controller
             return redirect('/room');
         }
 
-        return back()->withErrors('Hoppsan något gick fel!');
+        return back()->withErrors('Whoops.. something went wrong!');
     }
 }

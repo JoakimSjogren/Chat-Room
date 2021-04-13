@@ -1,19 +1,23 @@
+@extends('header')
+<a href="/" class = "home-button">Home</a>
+@include('errors')
+
 <form method="POST" action="register">
 @csrf
 
-<div>
+<div class="create-account-form">
 <label for="name">Username</label>
-<input name="name" type="name" id="name" />
+<input class="input @error('name') is-danger @enderror" name="name" type="text" id="name" required />
 </div>
 
 <div>
 <label for="email">Email</label>
-<input name="email" type="email" id="email" />
+<input class="input @error('email') is-danger @enderror" name="email" type="email" id="email" required />
 </div>
 
 <div>
 <label for="password">Password</label>
-<input name="password" type="password" id="password" />
+<input class="input @error('password') is-danger @enderror" name="password" type="password" id="password" required />
 </div>
 
 <button type="submit">register</button>

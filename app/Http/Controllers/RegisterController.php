@@ -17,9 +17,9 @@ class RegisterController extends Controller
     public function __invoke(Request $request)
     {
         $this->validate($request, [
-            'name' => 'required',
+            'name' => ['required', 'min:3', 'max:15', 'string'],
             'email' => 'required',
-            'password' => 'required',
+            'password' => ['required', 'min:3', 'max:15', 'string']
         ]);
 
         $user = new User();
@@ -28,6 +28,6 @@ class RegisterController extends Controller
         $user->password = Hash::make($request->input('password'));
         $user->save();
 
-        return back()->withErrors('Ajabaja det funkar inte!');
+        return redirect('/');
     }
 }
