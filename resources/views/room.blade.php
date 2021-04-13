@@ -12,7 +12,7 @@ Hej {{ $user->name }}
 @csrf
 
 <div>
-<input name="message" type="text" id="message" />
+<input class = "message-input" name="message" type="text" id="message" />
 </div>
 <button type="submit">send</button>
 

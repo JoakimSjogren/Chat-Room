@@ -1,49 +1,56 @@
 require("./bootstrap");
 
 const form = document.querySelector(".message-form");
+const messageInput = document.querySelector(".message-input");
 const messageContainer = document.querySelector(".message-container");
 let currentComments = [];
+if (form !== null) {
+    //Checks when message has been sent
+    form.addEventListener("submit", async (event) => {
+        event.preventDefault();
 
-form.addEventListener("submit", async (event) => {
-    event.preventDefault();
+        const formData = new FormData(form);
 
-    const formData = new FormData(form);
-
-    fetch("/message", {
-        method: "POST",
-        body: formData,
+        fetch("/message", {
+            method: "POST",
+            body: formData,
+        });
+        fetchMessages();
+        messageInput.value = "";
     });
-    fetchMessages();
-});
 
-async function fetchMessages() {
-    let res = await fetch("/api/message");
-    let data = await res.json();
+    async function fetchMessages() {
+        let res = await fetch("/api/message");
+        let data = await res.json();
 
-    let sameComments = false;
-    for (let i = 0; i < currentComments.length; i++) {
-        if (data[i] !== currentComments[i]) {
-            sameComments = false;
-            break;
+        let sameComments = false;
+        for (let i = 0; i < currentComments.length; i++) {
+            if (data[i] !== currentComments[i]) {
+                sameComments = false;
+                break;
+            }
+            sameComments = true;
         }
-        sameComments = true;
-    }
-    if (sameComments) {
-        return;
+        if (sameComments) {
+            return;
+        }
+
+        let messageCount = messageContainer.children.length;
+        for (let i = messageCount; i > 0; i--) {
+            messageContainer.children[i - 1].remove();
+        }
+
+        currentComments = data;
+        data.forEach((comment) => {
+            const newComment = document.createElement("p");
+            newComment.textContent = comment;
+            messageContainer.insertBefore(
+                newComment,
+                messageContainer.firstChild
+            );
+        });
     }
 
-    let messageCount = messageContainer.children.length;
-    for (let i = messageCount; i > 0; i--) {
-        messageContainer.children[i - 1].remove();
-    }
-
-    currentComments = data;
-    data.forEach((comment) => {
-        const newComment = document.createElement("p");
-        newComment.textContent = comment;
-        messageContainer.appendChild(newComment);
-    });
+    fetchMessages();
+    setInterval(fetchMessages, 1000);
 }
-
-setInterval(fetchMessages, 5000);
-fetchMessages();

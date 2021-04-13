@@ -1864,119 +1864,121 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 var form = document.querySelector(".message-form");
+var messageInput = document.querySelector(".message-input");
 var messageContainer = document.querySelector(".message-container");
 var currentComments = [];
-form.addEventListener("submit", /*#__PURE__*/function () {
-  var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(event) {
-    var formData;
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            event.preventDefault();
-            formData = new FormData(form);
-            fetch("/message", {
-              method: "POST",
-              body: formData
-            });
-            fetchMessages();
 
-          case 4:
-          case "end":
-            return _context.stop();
+if (form !== null) {
+  var fetchMessages = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
+      var res, data, sameComments, i, messageCount, _i;
+
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              _context2.next = 2;
+              return fetch("/api/message");
+
+            case 2:
+              res = _context2.sent;
+              _context2.next = 5;
+              return res.json();
+
+            case 5:
+              data = _context2.sent;
+              sameComments = false;
+              i = 0;
+
+            case 8:
+              if (!(i < currentComments.length)) {
+                _context2.next = 16;
+                break;
+              }
+
+              if (!(data[i] !== currentComments[i])) {
+                _context2.next = 12;
+                break;
+              }
+
+              sameComments = false;
+              return _context2.abrupt("break", 16);
+
+            case 12:
+              sameComments = true;
+
+            case 13:
+              i++;
+              _context2.next = 8;
+              break;
+
+            case 16:
+              if (!sameComments) {
+                _context2.next = 18;
+                break;
+              }
+
+              return _context2.abrupt("return");
+
+            case 18:
+              messageCount = messageContainer.children.length;
+
+              for (_i = messageCount; _i > 0; _i--) {
+                messageContainer.children[_i - 1].remove();
+              }
+
+              currentComments = data;
+              data.forEach(function (comment) {
+                var newComment = document.createElement("p");
+                newComment.textContent = comment;
+                messageContainer.insertBefore(newComment, messageContainer.firstChild);
+              });
+
+            case 22:
+            case "end":
+              return _context2.stop();
+          }
         }
-      }
-    }, _callee);
-  }));
+      }, _callee2);
+    }));
 
-  return function (_x) {
-    return _ref.apply(this, arguments);
-  };
-}());
+    return function fetchMessages() {
+      return _ref2.apply(this, arguments);
+    };
+  }();
 
-function fetchMessages() {
-  return _fetchMessages.apply(this, arguments);
-}
+  //Checks when message has been sent
+  form.addEventListener("submit", /*#__PURE__*/function () {
+    var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(event) {
+      var formData;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              event.preventDefault();
+              formData = new FormData(form);
+              fetch("/message", {
+                method: "POST",
+                body: formData
+              });
+              fetchMessages();
+              messageInput.value = "";
 
-function _fetchMessages() {
-  _fetchMessages = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2() {
-    var res, data, sameComments, i, messageCount, _i;
-
-    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
-      while (1) {
-        switch (_context2.prev = _context2.next) {
-          case 0:
-            _context2.next = 2;
-            return fetch("/api/message");
-
-          case 2:
-            res = _context2.sent;
-            _context2.next = 5;
-            return res.json();
-
-          case 5:
-            data = _context2.sent;
-            sameComments = false;
-            i = 0;
-
-          case 8:
-            if (!(i < currentComments.length)) {
-              _context2.next = 16;
-              break;
-            }
-
-            if (!(data[i] !== currentComments[i])) {
-              _context2.next = 12;
-              break;
-            }
-
-            sameComments = false;
-            return _context2.abrupt("break", 16);
-
-          case 12:
-            sameComments = true;
-
-          case 13:
-            i++;
-            _context2.next = 8;
-            break;
-
-          case 16:
-            if (!sameComments) {
-              _context2.next = 19;
-              break;
-            }
-
-            console.log("SAME");
-            return _context2.abrupt("return");
-
-          case 19:
-            console.log("NOt Same");
-            messageCount = messageContainer.children.length;
-
-            for (_i = messageCount; _i > 0; _i--) {
-              messageContainer.children[_i - 1].remove();
-            }
-
-            currentComments = data;
-            data.forEach(function (comment) {
-              var newComment = document.createElement("p");
-              newComment.textContent = comment;
-              messageContainer.appendChild(newComment);
-            });
-
-          case 24:
-          case "end":
-            return _context2.stop();
+            case 5:
+            case "end":
+              return _context.stop();
+          }
         }
-      }
-    }, _callee2);
-  }));
-  return _fetchMessages.apply(this, arguments);
-}
+      }, _callee);
+    }));
 
-setInterval(fetchMessages, 5000);
-fetchMessages();
+    return function (_x) {
+      return _ref.apply(this, arguments);
+    };
+  }());
+  fetchMessages();
+  setInterval(fetchMessages, 1000);
+}
 
 /***/ }),
 
