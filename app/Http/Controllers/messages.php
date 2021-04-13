@@ -9,8 +9,8 @@ class messages extends Controller
 {
     public function index(Message $message)
     {
-        $messages = Message::orderBy('user_id', 'desc')->take(10)->get();
-        // die(var_dump($messages));
+        $messages = Message::latest()->take(10)->get();
+
 
         $usersNameMap = $messages->map(function ($user) {
             return $user["message"];

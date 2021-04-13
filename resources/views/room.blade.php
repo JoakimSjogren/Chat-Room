@@ -6,10 +6,6 @@ Hej {{ $user->name }}
 
 <div class="message-container">
     
-    @foreach ($messages as $message)
-        {{-- <p>{{$user->name}}</p>
-        <p>{{$message->message}}</p> --}}
-    @endforeach
 </div>
 
 <form class = "message-form" method="post" action="/message">

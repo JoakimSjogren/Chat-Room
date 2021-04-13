@@ -29,10 +29,8 @@ async function fetchMessages() {
         sameComments = true;
     }
     if (sameComments) {
-        console.log("SAME");
         return;
     }
-    console.log("NOt Same");
 
     let messageCount = messageContainer.children.length;
     for (let i = messageCount; i > 0; i--) {

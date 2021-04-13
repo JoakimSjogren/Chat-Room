@@ -5,8 +5,10 @@ body {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    overflow-x: hidden;
 }
 
+/********* BUTTON ************/
 button {
     border-radius: 2em;
     border: 1.5px solid white;
@@ -21,6 +23,29 @@ button {
 button:hover {
     background: white;
     color: black;
-    outline-color: blue;
+    outline-color: cyan;
+}
+
+a {
+    color: white;
+    text-align: center;
+}
+
+/****** FORMULÄR ******/
+form {
+    margin-top: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+input {
+    border-radius: 20px;
+    width: 50%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border: white;
+    padding: 0.2em;
+    text-align: center;
 }
 

@@ -6,7 +6,9 @@
 <form method = "post" action = '/login'>
 @csrf
 
-<div>
+<img src="../images/logologin.png" height="200" alt="ChatLogo">
+
+<div class="login-form">
 <label for="name">Name</label>
 <input name="name" type="name" id="name" />
 </div>
@@ -18,7 +20,7 @@
 
 <button type="submit">enter</button>
 
-
+<br>
 
 <a href="/register">Create an account</a>
 </form>

@@ -1959,9 +1959,9 @@ function _fetchMessages() {
             }
 
             currentComments = data;
-            data.forEach(function (coment) {
+            data.forEach(function (comment) {
               var newComment = document.createElement("p");
-              newComment.textContent = coment;
+              newComment.textContent = comment;
               messageContainer.appendChild(newComment);
             });
 
