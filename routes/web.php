@@ -18,10 +18,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('index');
-// });
-
 Route::view('/', 'index')->name('login')->middleware('guest');
 Route::view('register', 'register')->name('register')->middleware('guest');
 Route::post('login', LoginController::class);

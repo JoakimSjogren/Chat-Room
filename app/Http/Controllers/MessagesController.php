@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Message;
 use Illuminate\Http\Request;
 
-class messages extends Controller
+class MessagesController extends Controller
 {
     public function index(Message $message)
     {

@@ -20,9 +20,8 @@ class RoomController extends Controller
     {
         $messages = DB::table('messages')->get();
 
-
         $user = Auth::user();
-        
+
         return view('room', [
             'user' => $user,
             'messages' => $messages

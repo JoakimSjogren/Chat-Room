@@ -1946,6 +1946,7 @@ if (form !== null) {
       return _ref2.apply(this, arguments);
     };
   }(); // fetchMessages();
+  // setInterval(fetchMessages, 1000);
 
 
   //Checks when message has been sent
@@ -1977,7 +1978,6 @@ if (form !== null) {
       return _ref.apply(this, arguments);
     };
   }());
-  setInterval(fetchMessages, 1000);
 }
 
 /***/ }),

@@ -10,6 +10,25 @@ use Tests\TestCase;
 
 class SendMessageTest extends TestCase
 {
+
+    public function test_view_room()
+    {
+
+        $user = new User();
+        $user->name = 'Test';
+        $user->email = 'testing@testing.com';
+        $user->password = Hash::make('123');
+        $user->save();
+
+        $response = $this
+            ->followingRedirects()
+            ->actingAs($user)
+            ->get('room');
+
+        $response->assertSeeText('Test');
+        $response->assertStatus(200);
+    }
+
     function test_send_message()
     {
         $user = new User();
