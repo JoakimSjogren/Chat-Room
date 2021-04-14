@@ -8,11 +8,9 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Hash;
 use Tests\TestCase;
 
-class LogoutTest extends TestCase
+class SendMessageTest extends TestCase
 {
-    use RefreshDatabase;
-
-    public function test_logout()
+    function test_send_message()
     {
         $user = new User();
         $user->name = 'Testing';
@@ -23,8 +21,10 @@ class LogoutTest extends TestCase
         $response = $this
             ->actingAs($user)
             ->followingRedirects()
-            ->get('logout');
-        $response->assertSeeText('Name');
-        $response->assertStatus(200);
+            ->post('message', [
+                'message' => 'test message',
+            ]);
+
+        $this->assertDatabaseHas('messages', ['message' => 'test message']);
     }
 }

@@ -16,4 +16,17 @@ class RegisterTest extends TestCase
         $response = $this->get('/register');
         $response->assertStatus(200);
     }
+
+    public function test_register()
+    {
+        $response = $this
+            ->followingRedirects()
+            ->post('register', [
+                'name' => 'Testing',
+                'email' => 'test@testing.com',
+                'password' => '123'
+            ]);
+
+        $this->assertDatabaseHas('users', ['name' => 'Testing', 'email' => 'test@testing.com']);
+    }
 }
