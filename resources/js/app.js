@@ -51,6 +51,6 @@ if (form !== null) {
         });
     }
 
-    fetchMessages();
+    // fetchMessages();
     setInterval(fetchMessages, 1000);
 }

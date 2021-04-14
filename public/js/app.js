@@ -1945,7 +1945,8 @@ if (form !== null) {
     return function fetchMessages() {
       return _ref2.apply(this, arguments);
     };
-  }();
+  }(); // fetchMessages();
+
 
   //Checks when message has been sent
   form.addEventListener("submit", /*#__PURE__*/function () {
@@ -1976,7 +1977,6 @@ if (form !== null) {
       return _ref.apply(this, arguments);
     };
   }());
-  fetchMessages();
   setInterval(fetchMessages, 1000);
 }
 
