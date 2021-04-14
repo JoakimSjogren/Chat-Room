@@ -15,7 +15,7 @@ class LoginTest extends TestCase
     public function test_view_login_form()
     {
         $response = $this->get('/');
-        $response->assertSeeText('Name');
+        $response->assertSeeText('Username');
         $response->assertStatus(200);
     }
 
@@ -34,7 +34,7 @@ class LoginTest extends TestCase
                 'password' => '123',
             ]);
 
-        $response->assertSeeText('Hej Testing');
+        $response->assertSeeText('Welcome Testing');
     }
 
     public function test_login_user_without_password()

@@ -5,11 +5,11 @@
     @csrf
     <img src="../images/logologin.png" height="200" alt="ChatLogo">
     <div class="login-form">
-        <label for="name">Name</label>
+        <label for="name">Username:</label>
         <input name="name" type="name" id="name" />
     </div>
     <div>
-        <label for="password">Password</label>
+        <label for="password">Password:</label>
         <input name="password" type="password" id="password" />
     </div>
     <button type="submit">enter</button>

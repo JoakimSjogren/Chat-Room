@@ -24,7 +24,7 @@ class LogoutTest extends TestCase
             ->actingAs($user)
             ->followingRedirects()
             ->get('logout');
-        $response->assertSeeText('Name');
+        $response->assertSeeText('Username');
         $response->assertStatus(200);
     }
 }

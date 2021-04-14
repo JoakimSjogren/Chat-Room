@@ -1,7 +1,7 @@
 @extends('header')
 
 <div class="welcome-name">
-    <h1>Hej {{ $user->name }} </h1>
+    <h1>Welcome {{ $user->name }} </h1>
 </div>
 <div class="logout-btn">
     <h2><a href="logout">Logout</a></h2>
