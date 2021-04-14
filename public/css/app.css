@@ -58,13 +58,17 @@ form {
     margin: 1em;
 }
 
+.message-container {
+    width: 100%;
+}
+
 .message-container p {
     margin-bottom: 20px;
     border: 1px solid white;
     letter-spacing: 1px;
     padding: 0.75em 1.5em;
     border-radius: 20px;
-    width: 100%;
+    width: 250px;
     max-width: 250px;
     word-break: break-all;
 }
@@ -82,6 +86,8 @@ input {
 .message-input {
     height: 40px;
     width: 100%;
+    text-align: left;
+    padding-left: 1em;
 }
 
 .message-input:focus {
